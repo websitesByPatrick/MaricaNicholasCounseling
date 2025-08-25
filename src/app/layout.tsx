@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-
-import { Roboto } from "next/font/google";
+import { Roboto, Merienda } from "next/font/google";
+import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -8,10 +10,11 @@ const roboto = Roboto({
   weight: ["400", "700", "900", "100", "300", "500", "600", "800"],
 });
 
-
-
-
-import "./globals.css";
+const merienda = Merienda({
+  subsets: ["latin"],
+  variable: "--font-merienda",
+  weight: ["400", "700"],
+});
 
 
 
@@ -26,8 +29,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={roboto.variable}>
-      <body className={`antialiased `}>{children}</body>
+    <html lang="en" className={`${merienda.variable} ${roboto.variable}`}>
+      <body className="layout">
+        <Header />
+        {children}
+        <Footer />
+        </body>
     </html>
   );
 }
