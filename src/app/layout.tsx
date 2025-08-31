@@ -16,8 +16,6 @@ const merienda = Merienda({
   weight: ["400", "700"],
 });
 
-
-
 export const metadata: Metadata = {
   title: "Marica Nicholas Counseling",
   description: "Counseling services by Marica Nicholas",
@@ -30,11 +28,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${merienda.variable} ${roboto.variable}`}>
+
       <body className="layout">
-        <Header />
-        {children}
-        <Footer />
-        </body>
+ 
+          <Header />
+          <div className="flex-grow">{children}</div>
+
+          <Footer />
+       
+      </body>
+
     </html>
   );
 }
