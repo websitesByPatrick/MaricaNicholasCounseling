@@ -1,13 +1,20 @@
- 
-import Main from "@/components/Main";
- 
+import { whatIsMentalHealth, howACounselorCanHelp } from "@/support/pageData";
+import Card from "@/components/Card";
 
 export default function Home() {
   return (
-    <div className="">
-      
-      <Main />
-       
-    </div>
+    <>
+      <Card
+        image={whatIsMentalHealth.image}
+        title={whatIsMentalHealth.title}
+        body={whatIsMentalHealth.body}
+      />
+
+      <Card
+        image={howACounselorCanHelp.image}
+        title={howACounselorCanHelp.title}
+        body={howACounselorCanHelp.body}
+      />
+    </>
   );
 }

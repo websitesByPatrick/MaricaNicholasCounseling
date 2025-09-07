@@ -1,41 +1,36 @@
+"use client";
 import React from "react";
 
 import Image from "next/image";
-import Link from "next/link";
 
 interface CardProps {
   image: string;
   title: string;
-  body: string[];
-  link: string;
-  index: number;
-  isDetail?: boolean;
+  body: Array<string>;
 }
 
-const Card = ({ image, title, body, link, index, isDetail }: CardProps) => {
-
-  link = isDetail ? "/" : link + "/" + index.toString();
-
+const Card = ({ image, title, body }: CardProps) => {
   return (
-    <div className="w-3/4 flex mt-10 bg-amber-50 p-5 rounded-2xl shadow-lg">
-      <div className="w-1/4 relative m-5">
-        <Image src={image} alt={title} fill className="object-contain" />
+    <div className="card-component">
+      <div className="card-component-image">
+        <Image
+          src={image}
+          alt={title}
+          width={450}
+          height={1}
+          className="object-contain rounded-3xl"
+          sizes="(max-width: 100px) 100vw, (max-width: 600px) 50vw, 33vw"
+        />
       </div>
 
-      <section className="w-3/4">
-        <h2 className="text-box-title">{title}</h2>
+      <section className="card-component-section">
+        <h2 className="card-component-section-title">{title}</h2>
 
         {body.map((paragraph, index) => (
-          <h3 className="text-box-item" key={index}>
+          <h3 className="card-component-section-item" key={index}>
             {paragraph}
           </h3>
         ))}
-        
-        {link && (
-          <Link className="text-box-link" href={link}>
-            {isDetail ? "Back" : "Read More"}
-          </Link>
-        )}
       </section>
     </div>
   );

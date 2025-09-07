@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto, Merienda } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -28,16 +28,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${merienda.variable} ${roboto.variable}`}>
-
       <body className="layout">
- 
-          <Header />
-          <div className="flex-grow">{children}</div>
+        <Header />
 
-          <Footer />
-       
+        <main className="flex flex-col w-full justify-center items-center">
+          {children}
+        </main>
+
+        <Footer />
       </body>
-
     </html>
   );
 }
